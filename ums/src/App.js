@@ -1,17 +1,11 @@
 import "./App.css";
-import List from "./Examples/list";
 import Button from "./Examples/handleClick";
-import OnChange from "./Examples/onChange";
-import Count from "./Examples/useState";
-import Prop from "./Examples/prop";
-import Heart from "./Examples/heart";
-import Show from "./Examples/show";
 
 function App() {
   return (
     <>
-      {/* <Button /> */}
-      <List />
+       <Button /> 
+      {/*<List />*.gi/}
       {/* <OnChange /> */}
       {/* <Count /> */}
       {/* <Prop /> */}
