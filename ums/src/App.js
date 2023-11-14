@@ -25,8 +25,8 @@ function App() {
         <div className="main-panel">
           <Routes>
             <Route path="/" element={<Home />}></Route>
-            <Route path="/users" element={<Role />}></Route>
-            <Route path="/role" element={<Users />}></Route>
+            <Route path="/role" element={<Role />}></Route>
+            <Route path="/users" element={<Users />}></Route>
           </Routes>
         </div>
       </div>
