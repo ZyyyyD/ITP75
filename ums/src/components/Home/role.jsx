@@ -194,6 +194,7 @@ const sortByStatus = () => {
         <td className="centered-cell">{dateCreated}</td>
         <td className="centered-cell">{nameCounts[role]}</td>
         <td className="centered-cell">
+          
           <div className="d-flex d-sm-inline-flex">
             <span className="">
               <IconButton className="text-success" style={smallButtonStyle}>
