@@ -169,8 +169,8 @@ const Users = () => {
           <h2>Users</h2>
           <div className="d-flex justify-content-end align-items-center mb-2">
             <div className="dropdown mr-2">
-              <button
-                className="btn btn-secondary dropdown-toggle"
+              <button style={{marginLeft: "10px", marginBottom: "10px", }}
+                className="btn btn-secondary "
                 type="button"
                 id="dropdownMenuButton"
                 data-bs-toggle="dropdown"
@@ -198,8 +198,8 @@ const Users = () => {
                 </button>
               </ul>
             </div>
-            <div className="search-container">
-              <input
+            <div className="search-container" style={{marginLeft: "10px", marginBottom: "10px", }} >
+              <input 
                 type="text"
                 placeholder="Search"
                 value={searchPhrase}
@@ -207,7 +207,7 @@ const Users = () => {
                 style={{ width: "200px" }}
               />
             </div>
-            <button className="btn btn-primary">
+            <button className="btn btn-primary" style={{marginLeft: "10px", marginBottom: "10px", }}>
               <Link
                 className="text-white"
                 style={{ textDecoration: "none" }}
@@ -275,7 +275,7 @@ const Users = () => {
               </tbody>
             </table>
           </div>
-          <div class="d-block">
+          <div class="d-block" style={{marginTop: "10px", marginBottom: "10px", }}>
             <nav class="d-flex justify-content-end align-items-center mb-2 ">
               <ul className="pagination">
                 <li className="page-item">
