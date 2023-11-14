@@ -171,15 +171,18 @@ const Users = () => {
           <h2>Users</h2>
           <div className="d-flex justify-content-end align-items-center mb-2">
             <div className="dropdown mr-2">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-                <BiSortAlt2 />
-              </button>
+               <button
+                    className="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style={{ marginRight: "10px", marginTop: "2px", marginBottom: "10px" }}
+                                  >
+                  <BiSortAlt2 />
+                  </button>
+
               <ul
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton">
@@ -200,39 +203,34 @@ const Users = () => {
                 </button>
               </ul>
             </div>
+
+            <div className="d-flex justify-content-between align-items-center mb-2">
             <div className="search-container">
-              <input
-                type="text"
-                placeholder="Search"
-                value={searchPhrase}
-                onChange={search}
-                style={{ width: "200px" }}
-              />
-            </div>
-            <button className="btn btn-primary">
-              <Link
-                className="text-white"
-                style={{ textDecoration: "none" }}
-                to="/user/adduser">
-                Add User
-              </Link>
-            </button>
+            <input type="text" placeholder="Search" value={searchPhrase} onChange={search} className="search-input" style={{ width: "200px" }} />
           </div>
+          </div>
+
+        <div className="ml-2">
+         <button className="btn btn-primary" style={{marginLeft: "10px", marginBottom: "10px", }}>Add User</button>
+        </div>
+        </div>
+
           <div className="table-responsive">
             <table className="table table d-none d-md-table">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th className="text-center">#</th>
                   <th></th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Date Created</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th className="text-center">Name</th>
+                  <th className="text-center">Email</th>
+                  <th className="text-center">Role</th>
+                  <th className="text-center">Date Created</th>
+                  <th className="text-center">Status</th>
+                  <th className="text-center">Actions</th>
                 </tr>
               </thead>
               <tbody>
+
                 {usersToDisplay.map((user) => (
                   <tr key={user.ID}>
                     <td>{user.ID}</td>
@@ -242,11 +240,11 @@ const Users = () => {
                         alt="Profile Image"
                         style={{}}></img>
                     </td>
-                    <td>{user.Name}</td>
-                    <td>{user.Email}</td>
-                    <td>{user.Role}</td>
-                    <td>{user.Date_Created}</td>
-                    <td>{user.Status}</td>
+                    <td className="centered-cell">{user.Name}</td>
+                    <td className="centered-cell">{user.Email}</td>
+                    <td className="centered-cell">{user.Role}</td>
+                    <td className="centered-cell">{user.Date_Created}</td>
+                    <td className="centered-cell">{user.Status}</td>
                     <td>
                       <div className="d-flex d-sm-inline-flex">
                         <span className=" ">
@@ -276,6 +274,7 @@ const Users = () => {
                 ))}
               </tbody>
             </table>
+<<<<<<< HEAD
             {/* Mobile table Veiw */}
 
             <table class="table table-responsive d-md-none table-borderless">
@@ -313,6 +312,45 @@ const Users = () => {
               </thead>
             </table>
           </div>
+=======
+   {/* Mobile table Veiw */}
+   
+  <table class="table table-responsive d-md-none table-borderless" >
+  <thead >
+  {usersToDisplay.map((user) => (
+    <tr class="rounded-pill">
+    <td >{user.ID}</td>
+    <td>
+      <img
+      src={defUserImage}
+      alt="Profile Image"
+      style={{}}></img>
+    </td>
+      <td>{user.Name}</td>
+      <td>{user.Role}</td>
+      <td>{user.Status}</td>
+      <td>
+      <div className="d-flex d-sm-inline-flex">
+        <span className=" ">
+          <Link to="/user/adduser">
+            <IconButton
+             className="text-success"
+                style={smallButtonStyle}>
+                  <BsFillPencilFill />
+                    </IconButton>
+                    </Link>
+          </span>
+           <span className="d-flex d-sm-inline-flex ">
+                          <Delete />
+           </span>
+       </div>
+      </td>
+    </tr>
+    ))}
+  </thead>
+</table>
+</div>
+>>>>>>> d62d6db01570c735cecc6fd8e546de3f0ec00a4d
           <div class="d-block">
             <nav class="d-flex justify-content-end align-items-center mb-2 ">
               <ul className="pagination">
@@ -344,7 +382,7 @@ const Users = () => {
             </nav>
           </div>
         </div>
-      </div>
+       </div>
     </>
   );
 };
