@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
 import IconButton from "@mui/material/IconButton";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from "react";
@@ -8,6 +11,7 @@ import { BiSortAlt2 } from "react-icons/bi";
 import { BsFillPencilFill } from "react-icons/bs";
 import Data from './Data.json';
 import Role from './role';
+<<<<<<< HEAD
 =======
 import IconButton from "@mui/material/IconButton";
 import defUserImage from "../../asset/defUserImage.png";
@@ -25,21 +29,31 @@ import Data from "./Data.json";
 import { Link } from "react-router-dom";
 import Delete from "./delete";
 >>>>>>> 697232f35286e9962b9d9e18c88061762c34c65e
+=======
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
 
 const Users = () => {
   const [users, setUsers] = useState(Data);
   const [currentPage, setCurrentPage] = useState(1);
+<<<<<<< HEAD
 <<<<<<< HEAD
   const [selectedUser, setSelectedUser] = useState(null);
   const usersPerPage = 7;
 =======
   const usersPerPage = 10;
 >>>>>>> 697232f35286e9962b9d9e18c88061762c34c65e
+=======
+  const [selectedUser, setSelectedUser] = useState(null);
+  const usersPerPage = 7;
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
   const lastIndex = currentPage * usersPerPage;
   const firstIndex = lastIndex - usersPerPage;
   const usersToDisplay = users.slice(firstIndex, lastIndex);
   const totalPages = Math.ceil(users.length / usersPerPage);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
 //sort shit
 const [sorted, setSorted] = useState({sorted:"id",reversed:false});
 
@@ -121,6 +135,7 @@ const sortByStatus = () => {
       user.Date_Created.toLowerCase().includes(searchTerm)
     );
   });
+<<<<<<< HEAD
 =======
   //sort shit
   const [sorted, setSorted] = useState({ sorted: "id", reversed: false });
@@ -201,16 +216,23 @@ const sortByStatus = () => {
       );
     });
 >>>>>>> 697232f35286e9962b9d9e18c88061762c34c65e
+=======
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
     setUsers(matchedUsers);
     setSearchPhrase(event.target.value);
   };
   const smallButtonStyle = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     fontSize: "13px", 
     
 =======
     fontSize: "13px",
 >>>>>>> 697232f35286e9962b9d9e18c88061762c34c65e
+=======
+    fontSize: "13px", 
+    
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
   };
   //range of page number
   const pageRange = 5;
@@ -224,6 +246,7 @@ const sortByStatus = () => {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const pageNumbers = Array.from({ length: maxPage - minPage + 1 }, (_, i) => minPage + i);
 =======
   const pageNumbers = Array.from(
@@ -231,6 +254,9 @@ const sortByStatus = () => {
     (_, i) => minPage + i
   );
 >>>>>>> 697232f35286e9962b9d9e18c88061762c34c65e
+=======
+  const pageNumbers = Array.from({ length: maxPage - minPage + 1 }, (_, i) => minPage + i);
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
 
   function prePage() {
     if (currentPage !== 1) {
@@ -249,15 +275,21 @@ const sortByStatus = () => {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   const [visible, setVisible] = useState(false);
 >>>>>>> 697232f35286e9962b9d9e18c88061762c34c65e
+=======
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
   return (
     <>
     
       <div className="content-wrapper" style={{ backgroundColor: '#ffffff'}}>
         <div className="wrapper">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
           <h2>Users</h2>
           <div className="d-flex justify-content-end align-items-center mb-2">
             <div className="dropdown mr-2">
@@ -266,6 +298,7 @@ const sortByStatus = () => {
             <div className="d-flex justify-content-between align-items-center mb-2">
             <div className="search-container">
             <input type="text" placeholder="Search" value={searchPhrase} onChange={search} className="search-input" style={{ width: "200px" }} />
+<<<<<<< HEAD
 =======
           <h3 className="d-sm-block d-md-block d-lg-none text-center">
             <a
@@ -431,6 +464,9 @@ const sortByStatus = () => {
             </nav>
 >>>>>>> 697232f35286e9962b9d9e18c88061762c34c65e
           </div>
+=======
+          </div>
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
           </div>
 
         <div className="ml-2">
@@ -446,7 +482,12 @@ const sortByStatus = () => {
                 <th className="text-center">#</th>
                 <th className="text-center">Name</th>
                 <th className="text-center">Email</th>
+<<<<<<< HEAD
                 <th className="text-center">Role</th>
+=======
+                <th Role users={users} setUsers={setUsers} sorted={sorted} setSorted={setSorted}>
+                </th>
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
                 <th className="text-center">Date Created</th>
                 <th className="text-center">Status</th>
                 <th className="text-center">Actions</th>
@@ -468,6 +509,7 @@ const sortByStatus = () => {
                
             
               <div className="d-flex d-sm-inline-flex">
+<<<<<<< HEAD
               <span className="">
               <IconButton className="text-success" style={smallButtonStyle}>
                 <BsFillPencilFill />
@@ -480,12 +522,35 @@ const sortByStatus = () => {
             </span>
           </div>
 
+=======
+              <span className=" ">
+                <IconButton style={smallButtonStyle}>
+                <BsFillPencilFill className="green-icon"/>
+              </IconButton>
+            </span>
+                <span className=" d-none d-sm-none  d-md-none d-lg-block">
+                <IconButton style={smallButtonStyle}>
+                    <AiFillCloseCircle className="red-icon"/>
+                    </IconButton>
+                </span>
+                <span className=" d-none d-sm-none  d-md-none d-lg-block">
+                <IconButton style={smallButtonStyle}>
+                    <AiOutlineEllipsis />
+                </IconButton>
+                </span>
+              </div>
+            
+                    
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
           <nav className="d-flex justify-content-end align-items-center mb-2">
             <ul className="pagination">
               <li className="page-item">
@@ -510,11 +575,18 @@ const sortByStatus = () => {
               </li>
             </ul>
           </nav>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
         </div>
       </div>
     </>
   );
 };
 
+<<<<<<< HEAD
 export default Users;
+=======
+export default Users;
+>>>>>>> 0cefe86936b5703d74e540ce0d151fa467a2b0d1
