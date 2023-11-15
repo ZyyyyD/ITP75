@@ -182,8 +182,11 @@ const Users = () => {
                 data-bs-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-                style={{ marginRight: "10px", marginTop: "3px" ,marginBottom:"10px"}}
-                              >
+                style={{
+                  marginRight: "10px",
+                  marginTop: "3px",
+                  marginBottom: "10px",
+                }}>
                 <BiSortAlt2 />
               </button>
               <ul
@@ -206,17 +209,28 @@ const Users = () => {
                 </button>
               </ul>
             </div>
-            
-            <div className="d-flex justify-content-between align-items-center mb-2">
-            <div className="search-container">
-            <input type="text" placeholder="Search" value={searchPhrase} onChange={search} className="search-input" style={{ width: "200px" }} />
-          </div>
-          </div>
 
-        <div className="ml-2">
-         <button className="btn btn-primary" style={{marginLeft: "10px", marginBottom: "10px", }}>Add User</button>
-        </div>
-        </div>
+            <div className="d-flex justify-content-between align-items-center mb-2">
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchPhrase}
+                  onChange={search}
+                  className="search-input"
+                  style={{ width: "200px" }}
+                />
+              </div>
+            </div>
+
+            <div className="ml-2">
+              <button
+                className="btn btn-primary"
+                style={{ marginLeft: "10px", marginBottom: "10px" }}>
+                Add User
+              </button>
+            </div>
+          </div>
 
           <div className="table-responsive">
             <table className="table table d-none d-md-table">
@@ -257,8 +271,8 @@ const Users = () => {
                       </div>
                     </td>
                   </tr>
-                );
-               })}   
+                ))}
+                ;
               </tbody>
             </table>
           </div>
@@ -292,44 +306,46 @@ const Users = () => {
             </ul>
           </nav>
         </div>
-        
-  {/* Mobile table Veiw */}
-<table className="table table-responsive-sm d-md-none table-borderless">
-  <thead className="table-responsive-md">
-    {Object.keys(nameCounts).map((role, index) => {
-      const roleUsers = users.filter(user => user.Role === role);
-      // Extract unique module names for the current role
-      const uniqueModules = [...new Set(roleUsers.flatMap(user => user.Handles))];
 
-      return (
-        <tr key={index}>
-          <td>{index + 1}</td>
-          <td>{role}</td>
-          <td class="table-cell">{uniqueModules.join(", ")}</td>
-          <td >{nameCounts[role]}</td>
-          <td >
-            <div className="d-flex d-sm-inline-flex ">
-              <span className="">
-                <IconButton
-                  className=" text-success"
-                  style={smallButtonStyle}>
-                  <BsFillPencilFill />
-                </IconButton>
-              </span>
-              <span className=" d-flex d-sm-inline-flex">
-                <IconButton
-                  className=" text-danger"
-                  style={smallButtonStyle}>
-                  <AiFillCloseCircle />
-                </IconButton>
-              </span>
-            </div>
-          </td>
-        </tr>
-      );
-    })}
-  </thead>
-</table> 
+        {/* Mobile table Veiw */}
+        <table className="table table-responsive-sm d-md-none table-borderless">
+          <thead className="table-responsive-md">
+            {Object.keys(nameCounts).map((role, index) => {
+              const roleUsers = users.filter((user) => user.Role === role);
+              // Extract unique module names for the current role
+              const uniqueModules = [
+                ...new Set(roleUsers.flatMap((user) => user.Handles)),
+              ];
+
+              return (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{role}</td>
+                  <td class="table-cell">{uniqueModules.join(", ")}</td>
+                  <td>{nameCounts[role]}</td>
+                  <td>
+                    <div className="d-flex d-sm-inline-flex ">
+                      <span className="">
+                        <IconButton
+                          className=" text-success"
+                          style={smallButtonStyle}>
+                          <BsFillPencilFill />
+                        </IconButton>
+                      </span>
+                      <span className=" d-flex d-sm-inline-flex">
+                        <IconButton
+                          className=" text-danger"
+                          style={smallButtonStyle}>
+                          <AiFillCloseCircle />
+                        </IconButton>
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </thead>
+        </table>
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import {
   AiOutlineCaretLeft,
   AiOutlineCaretRight,
-  AiOutlineEllipsis
+  AiOutlineEllipsis,
 } from "react-icons/ai";
 import { BiSortAlt2 } from "react-icons/bi";
 import { BsFillPencilFill } from "react-icons/bs";
@@ -15,8 +15,8 @@ import Delete from "./delete";
 
 const Users = () => {
   const [users, setUsers] = useState(Data);
- 
-  //sort 
+
+  //sort
   const [sorted, setSorted] = useState({ sorted: "id", reversed: false });
 
   const sortById = () => {
@@ -80,7 +80,7 @@ const Users = () => {
     });
     setUsers(usersCopy);
   };
-  // search 
+  // search
   const [searchPhrase, setSearchPhrase] = useState("");
   const search = (event) => {
     const searchTerm = event.target.value.toLowerCase();
@@ -138,7 +138,7 @@ const Users = () => {
   }
 
   const [visible, setVisible] = useState(false);
-  
+
   return (
     <>
       <div className="content-wrapper">
@@ -171,17 +171,20 @@ const Users = () => {
           <h2>Users</h2>
           <div className="d-flex justify-content-end align-items-center mb-2">
             <div className="dropdown mr-2">
-               <button
-                    className="btn btn-secondary dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    style={{ marginRight: "10px", marginTop: "2px", marginBottom: "10px" }}
-                                  >
-                  <BiSortAlt2 />
-                  </button>
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                style={{
+                  marginRight: "10px",
+                  marginTop: "2px",
+                  marginBottom: "10px",
+                }}>
+                <BiSortAlt2 />
+              </button>
 
               <ul
                 className="dropdown-menu"
@@ -205,15 +208,26 @@ const Users = () => {
             </div>
 
             <div className="d-flex justify-content-between align-items-center mb-2">
-            <div className="search-container">
-            <input type="text" placeholder="Search" value={searchPhrase} onChange={search} className="search-input" style={{ width: "200px" }} />
-          </div>
-          </div>
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchPhrase}
+                  onChange={search}
+                  className="search-input"
+                  style={{ width: "200px" }}
+                />
+              </div>
+            </div>
 
-        <div className="ml-2">
-         <button className="btn btn-primary" style={{marginLeft: "10px", marginBottom: "10px", }}>Add User</button>
-        </div>
-        </div>
+            <div className="ml-2">
+              <button
+                className="btn btn-primary"
+                style={{ marginLeft: "10px", marginBottom: "10px" }}>
+                Add User
+              </button>
+            </div>
+          </div>
 
           <div className="table-responsive">
             <table className="table table d-none d-md-table">
@@ -230,7 +244,6 @@ const Users = () => {
                 </tr>
               </thead>
               <tbody>
-
                 {usersToDisplay.map((user) => (
                   <tr key={user.ID}>
                     <td>{user.ID}</td>
@@ -274,7 +287,6 @@ const Users = () => {
                 ))}
               </tbody>
             </table>
-<<<<<<< HEAD
             {/* Mobile table Veiw */}
 
             <table class="table table-responsive d-md-none table-borderless">
@@ -312,45 +324,6 @@ const Users = () => {
               </thead>
             </table>
           </div>
-=======
-   {/* Mobile table Veiw */}
-   
-  <table class="table table-responsive d-md-none table-borderless" >
-  <thead >
-  {usersToDisplay.map((user) => (
-    <tr class="rounded-pill">
-    <td >{user.ID}</td>
-    <td>
-      <img
-      src={defUserImage}
-      alt="Profile Image"
-      style={{}}></img>
-    </td>
-      <td>{user.Name}</td>
-      <td>{user.Role}</td>
-      <td>{user.Status}</td>
-      <td>
-      <div className="d-flex d-sm-inline-flex">
-        <span className=" ">
-          <Link to="/user/adduser">
-            <IconButton
-             className="text-success"
-                style={smallButtonStyle}>
-                  <BsFillPencilFill />
-                    </IconButton>
-                    </Link>
-          </span>
-           <span className="d-flex d-sm-inline-flex ">
-                          <Delete />
-           </span>
-       </div>
-      </td>
-    </tr>
-    ))}
-  </thead>
-</table>
-</div>
->>>>>>> d62d6db01570c735cecc6fd8e546de3f0ec00a4d
           <div class="d-block">
             <nav class="d-flex justify-content-end align-items-center mb-2 ">
               <ul className="pagination">
@@ -382,7 +355,7 @@ const Users = () => {
             </nav>
           </div>
         </div>
-       </div>
+      </div>
     </>
   );
 };
