@@ -91,16 +91,25 @@ const Role = () => {
   };
 
   const sortByStatus = () => {
-    setSorted({ sorted: "status", reversed: false });
+    setSorted({ sorted: "status", reversed: !sorted.reversed });
     const usersCopy = [...users];
+  
+    
     usersCopy.sort((userA, userB) => {
       if (sorted.reversed) {
         return nameCounts[userB.Role] - nameCounts[userA.Role];
       }
       return nameCounts[userA.Role] - nameCounts[userB.Role];
     });
+  
+    
+    usersCopy.sort((userA, userB) => {
+      return userA.Role.localeCompare(userB.Role);
+    });
+  
     setUsers(usersCopy);
   };
+  
   
   // search 
   const [searchPhrase, setSearchPhrase] = useState("");
