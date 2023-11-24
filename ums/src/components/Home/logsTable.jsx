@@ -19,12 +19,12 @@ const LogsTable = ({
     const [searchedLogs, setSearchedLogs] = useState(LogData);
     const [moved, setMoved] = useState(true);
 
-    const rerender = React.useReducer(() => ({}), {})[1]
+    // const rerender = React.useReducer(() => ({}), {})[1]
 
     const headers = ["#", "Description", "Time Created", "Date Created", "User", "Actions"];
 
     const reloadLogs = (data) => {
-        rerender();
+        // rerender();
         setLogs(data);
     }
 
@@ -32,18 +32,15 @@ const LogsTable = ({
         setMoved(!moved);
         const last = 1 * 5;
         const first = last - 5;
-        rerender();
+        // rerender();
         
         setLogs(data.slice(first, last));
         setSearchedLogs(data);
     }
 
-    useEffect(() => {
-
-        // GET USER QUERY HERE THEN STORE TO LOGS STATE
-
-
-    }, [])
+    // useEffect(() => {
+    //     // GET USER QUERY HERE THEN STORE TO LOGS STATE
+    // }, [])
 
 return (                                                                
     // <div>
