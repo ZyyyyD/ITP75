@@ -8,10 +8,10 @@ import {
 const PaginationControl = ({
     items,
     onSuccess,
-    currentpage,
+    moved,
 }) => {
 
-    const [currentPage, setCurrentPage] = useState(1);
+    const [tempCurrentPage, setTempCurrentPage] = useState(1);
     const recordsPerPage = 5;
     const npage = Math.ceil(items.length / recordsPerPage);
     const numbers = [...Array(npage + 1).keys()].slice(1);
@@ -20,6 +20,10 @@ const PaginationControl = ({
         onSuccess(handleLoad(items, 1));
     }, [])
 
+    useEffect(() => {
+        setTempCurrentPage(1);
+    }, [moved])
+
     const handleLoad = (list, pagenumber) => {
         const last = pagenumber * recordsPerPage;
         const first = last - recordsPerPage;
@@ -27,20 +31,20 @@ const PaginationControl = ({
     }
 
     function prevPage() {
-        if(currentPage !== 1) {
-            setCurrentPage(currentPage - 1)
-            onSuccess(handleLoad(items, currentPage - 1));
+        if(tempCurrentPage !== 1) {
+            setTempCurrentPage(tempCurrentPage - 1);
+            onSuccess(handleLoad(items, tempCurrentPage - 1));
         }
     }
     function changeCPage(id) {
-        setCurrentPage(id);
+        setTempCurrentPage(id);
         onSuccess(handleLoad(items, id));
     }
 
     function nextPage() {
-        if (currentPage < npage) {
-            setCurrentPage(currentPage + 1);
-            onSuccess(handleLoad(items, currentPage + 1));
+        if (tempCurrentPage < npage) {
+            setTempCurrentPage(tempCurrentPage + 1);
+            onSuccess(handleLoad(items, tempCurrentPage + 1));
         }
     }
     
@@ -56,7 +60,7 @@ const PaginationControl = ({
                 </li>
                 {
                     numbers.map((n, i) => {
-                        const name = currentPage === n ? "page-link active" : "page-link";
+                        const name = tempCurrentPage === n ? "page-link active" : "page-link";
                     return (
                         // {console.log(n)}
                     <li className="page-item" key={n}>
@@ -79,6 +83,7 @@ const PaginationControl = ({
 export default PaginationControl;
 
 PaginationControl.prototype = {
-    items: PropTypes.any,
+    items: PropTypes.array,
+    moved: PropTypes.bool,
     onSuccess: PropTypes.func,
 }

@@ -17,7 +17,7 @@ const LogsTable = ({
     // states
     const [logs, setLogs] = useState(LogData);
     const [searchedLogs, setSearchedLogs] = useState(LogData);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [moved, setMoved] = useState(true);
 
     const rerender = React.useReducer(() => ({}), {})[1]
 
@@ -29,7 +29,7 @@ const LogsTable = ({
     }
 
     const sortData = (data) => {
-        setCurrentPage(1);
+        setMoved(!moved);
         const last = 1 * 5;
         const first = last - 5;
         rerender();
@@ -56,7 +56,7 @@ return (
             </div>
             
             <TableControl headers={headers} items={logs} allItems={LogData} onSuccess={sortData}/>
-            <PaginationControl items={searchedLogs} onSuccess={reloadLogs} currentPage={currentPage}/>
+            <PaginationControl items={searchedLogs} onSuccess={reloadLogs} moved={moved}/>
         </div>
     </div>
     // </div>
