@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../../asset/logo.png";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Data from "./Data.json";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -9,18 +10,23 @@ function Login() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const staticUsername = "cueno@gmail.com";
-  const staticPassword = "password";
+  const users = [
+    { username: "cueno@gmail.com", password: "password" },
+  ];
 
   const navigate = useNavigate();
   
   const handleLogin = () => {
-    if (username === staticUsername && password === staticPassword) {
+  const matchedUser = users.find(
+    (user) => user.username === username && user.password === password);
+
+    if (matchedUser) {
       setLoggedIn(true);
       navigate("/dashboard");
     } else {
       setErrorMessage("Wrong username or password. Please try again.");
     }
+
   };
   return (
     <>
