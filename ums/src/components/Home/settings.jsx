@@ -24,28 +24,31 @@ const Settings = () => {
 
   return (
     <>
-      <div className="content-wrapper">
+      <div className="content-wrapper" data-testid="settings-component">
         <h2>Change Password</h2>
         <div>
-          <label>Current Password:</label>
+          <label htmlFor="currentPasswordInput">Current Password:</label>
           <input
             type="password"
+            id="currentPasswordInput"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
           />
         </div>
         <div>
-          <label>New Password:</label>
+          <label htmlFor="newPasswordInput">New Password:</label>
           <input
             type="password"
+            id="newPasswordInput"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
           />
         </div>
         <div>
-          <label>Confirm Password:</label>
+          <label htmlFor="confirmPasswordInput">Confirm Password:</label>
           <input
             type="password"
+            id="confirmPasswordInput"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />

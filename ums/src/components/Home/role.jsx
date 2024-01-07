@@ -19,7 +19,7 @@ const Users = () => {
   const firstIndex = lastIndex - usersPerPage;
   const usersToDisplay = users.slice(firstIndex, lastIndex);
   const totalPages = Math.ceil(users.length / usersPerPage);
-  //sort shit
+  //sort
   const [sorted, setSorted] = useState({ sorted: "id", reversed: false });
 
   const sortById = () => {
@@ -33,15 +33,20 @@ const Users = () => {
     });
     setUsers(usersCopy);
   };
-  const sortByName = () => {
-    setSorted({ sorted: "name", reversed: !sorted.reversed });
+  const sortByHandle = () => {
+    setSorted({ sorted: "handles", reversed: !sorted.reversed });
     const usersCopy = [...users];
+  
     usersCopy.sort((userA, userB) => {
+      const handleA = String(userA.Handles);
+      const handleB = String(userB.Handles);
+  
       if (sorted.reversed) {
-        return userB.Name.localeCompare(userA.Name);
+        return handleB.localeCompare(handleA);
       }
-      return userA.Name.localeCompare(userB.Name);
+      return handleA.localeCompare(handleB);
     });
+  
     setUsers(usersCopy);
   };
   const sortByRole = () => {
@@ -83,6 +88,7 @@ const Users = () => {
     });
     setUsers(usersCopy);
   };
+
   // search shit
   const [searchPhrase, setSearchPhrase] = useState("");
   const search = (event) => {
@@ -197,10 +203,10 @@ const Users = () => {
                 <button className="dropdown-item" onClick={sortById}>
                   ID
                 </button>
-                <button className="dropdown-item" onClick={sortByName}>
-                  Name
-                </button>
                 <button className="dropdown-item" onClick={sortByRole}>
+                  Role
+                </button>
+                <button className="dropdown-item" onClick={sortByHandle}>
                   Handle
                 </button>
                 <button className="dropdown-item" onClick={sortByDc}>
@@ -229,17 +235,17 @@ const Users = () => {
               <button
                 className="btn btn-primary"
                 style={{ marginLeft: "10px", marginBottom: "10px" }}>
-                Add User
+                Add Role
               </button>
             </div>
           </div>
 
           <div className="table-responsive">
-            <table className="table table d-none d-md-table">
+            <table className="table ">
               <thead>
                 <tr>
                   <th>#</th>
-                  <th className="centered-cell">Name</th>
+                  <th className="centered-cell ">Name</th>
                   <th className="centered-cell">Handle</th>
                   <th className="centered-cell">Date Created</th>
                   <th className="centered-cell">No.of Users</th>
@@ -264,7 +270,7 @@ const Users = () => {
                       <td className="centered-cell">
                         {uniqueModules.join(", ")}
                       </td>
-                      <td className="centered-cell">{dateCreated}</td>
+                      <td className="centered-cell d-none d-sm-table-cell">{dateCreated}</td>
                       <td className="centered-cell">{nameCounts[role]}</td>
                       <td className="centered-cell">
                         <div className="d-flex d-sm-inline-flex ">
@@ -321,45 +327,7 @@ const Users = () => {
           </nav>
         </div>
 
-        {/* Mobile table Veiw */}
-        <table className="table table-responsive-sm d-md-none table-borderless">
-          <thead className="table-responsive-md">
-            {Object.keys(nameCounts).map((role, index) => {
-              const roleUsers = users.filter((user) => user.Role === role);
-              // Extract unique module names for the current role
-              const uniqueModules = [
-                ...new Set(roleUsers.flatMap((user) => user.Handles)),
-              ];
-
-              return (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{role}</td>
-                  <td class="table-cell">{uniqueModules.join(", ")}</td>
-                  <td>{nameCounts[role]}</td>
-                  <td>
-                    <div className="d-flex d-sm-inline-flex ">
-                      <span className="">
-                        <IconButton
-                          className=" text-success"
-                          style={smallButtonStyle}>
-                          <BsFillPencilFill />
-                        </IconButton>
-                      </span>
-                      <span className=" d-flex d-sm-inline-flex">
-                        <IconButton
-                          className=" text-danger"
-                          style={smallButtonStyle}>
-                          <AiFillCloseCircle />
-                        </IconButton>
-                      </span>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </thead>
-        </table>
+        
       </div>
     </>
   );
