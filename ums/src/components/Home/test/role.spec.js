@@ -9,7 +9,10 @@ describe('Role Component', () => {
       render(<MemoryRouter><Role /></MemoryRouter>);
 
       expect(screen.getByRole('button', { name: 'Add Roles' })).toBeInTheDocument(); 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
       expect(screen.getByPlaceholderText('Search')).toBeInTheDocument(); 
 
     });
@@ -28,4 +31,8 @@ describe('Role Component', () => {
         fireEvent.change(searchInput, { target: { value: 'Manager' } }); 
         fireEvent.change(searchInput, { target: { value: 'User' } }); 
     });
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2

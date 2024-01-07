@@ -11,7 +11,7 @@ import { BiSortAlt2, BiUnderline } from "react-icons/bi";
 import { BsFillPencilFill } from "react-icons/bs";
 import Data from "./Data.json";
 
-const Users = () => {
+const Role = () => {
   const [users, setUsers] = useState(Data);
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
@@ -19,53 +19,68 @@ const Users = () => {
   const firstIndex = lastIndex - usersPerPage;
   const usersToDisplay = users.slice(firstIndex, lastIndex);
   const totalPages = Math.ceil(users.length / usersPerPage);
-  //sort
+  //sort shit
   const [sorted, setSorted] = useState({ sorted: "id", reversed: false });
 
   const sortById = () => {
     setSorted({ sorted: "id", reversed: !sorted.reversed });
     const usersCopy = [...users];
+  
+    
     usersCopy.sort((userA, userB) => {
       if (sorted.reversed) {
-        return userA.ID - userB.ID;
+        return userB.ID - userA.ID;
       }
-      return userB.ID - userA.ID;
+      return userA.ID - userB.ID;
     });
+  
+    
+    usersCopy.sort((userA, userB) => {
+      return userA.Role.localeCompare(userB.Role);
+    });
+  
     setUsers(usersCopy);
   };
+  const sortByName = () => {
+    setSorted({ sorted: "name", reversed: !sorted.reversed });
+    const usersCopy = [...users];
+  
+    usersCopy.sort((userA, userB) => {
+      if (sorted.reversed) {
+        return userB.Name.localeCompare(userA.Name);
+      }
+      return userA.Name.localeCompare(userB.Name);
+    });
+  
+    setUsers(usersCopy);
+  };
+
   const sortByHandle = () => {
     setSorted({ sorted: "handles", reversed: !sorted.reversed });
     const usersCopy = [...users];
-  
     usersCopy.sort((userA, userB) => {
       const handleA = String(userA.Handles);
       const handleB = String(userB.Handles);
-  
+      
       if (sorted.reversed) {
-        return handleB.localeCompare(handleA);
-      }
-      return handleA.localeCompare(handleB);
-    });
-  
-    setUsers(usersCopy);
-  };
-  const sortByRole = () => {
-    setSorted({ sorted: "role", reversed: !sorted.reversed });
-    const usersCopy = [...users];
-    usersCopy.sort((userA, userB) => {
-      if (sorted.reversed) {
-        return userB.Role.localeCompare(userA.Role);
-      }
-      return userA.Role.localeCompare(userB.Role);
+        return handleB.localeCompare(handleA);   
+         }
+         return handleA.localeCompare(handleB); 
     });
     setUsers(usersCopy);
   };
+
+
   const sortByDc = () => {
-    setSorted({ sorted: "date_created", reversed: !sorted.reversed });
+    setSorted({ sorted: "date_created", reversed: true });
     const usersCopy = [...users];
     usersCopy.sort((userA, userB) => {
       const dateA = new Date(userA.Date_Created);
       const dateB = new Date(userB.Date_Created);
+
+      if (dateA.getTime() === dateB.getTime()) {
+        return userA.Role.localeCompare(userB.Role);
+      }
 
       if (sorted.reversed) {
         return dateA - dateB;
@@ -78,17 +93,16 @@ const Users = () => {
   };
 
   const sortByStatus = () => {
-    setSorted({ sorted: "status", reversed: !sorted.reversed });
+    setSorted({ sorted: "status", reversed: false });
     const usersCopy = [...users];
     usersCopy.sort((userA, userB) => {
       if (sorted.reversed) {
-        return userB.Status.localeCompare(userA.Status);
+        return nameCounts[userB.Role] - nameCounts[userA.Role];
       }
-      return userA.Status.localeCompare(userB.Status);
+      return nameCounts[userA.Role] - nameCounts[userB.Role];
     });
     setUsers(usersCopy);
   };
-
   // search shit
   const [searchPhrase, setSearchPhrase] = useState("");
   const search = (event) => {
@@ -109,8 +123,9 @@ const Users = () => {
   const smallButtonStyle = {
     fontSize: "13px",
   };
+  
   //range of page number
-  const pageRange = 5;
+  const pageRange = 2;
   let minPage = Math.max(1, currentPage - Math.floor(pageRange / 2));
   let maxPage = minPage + pageRange - 1;
 
@@ -213,7 +228,7 @@ const Users = () => {
                   Date Created
                 </button>
                 <button className="dropdown-item" onClick={sortByStatus}>
-                  No.of Users
+                  No. of Users
                 </button>
               </ul>
             </div>
@@ -235,7 +250,7 @@ const Users = () => {
               <button
                 className="btn btn-primary"
                 style={{ marginLeft: "10px", marginBottom: "10px" }}>
-                Add Role
+                Add User
               </button>
             </div>
           </div>
@@ -327,10 +342,48 @@ const Users = () => {
           </nav>
         </div>
 
-        
+        {/* Mobile table Veiw */}
+        <table className="table table-responsive-sm d-md-none table-borderless">
+          <thead className="table-responsive-md">
+            {Object.keys(nameCounts).map((role, index) => {
+              const roleUsers = users.filter((user) => user.Role === role);
+              // Extract unique module names for the current role
+              const uniqueModules = [
+                ...new Set(roleUsers.flatMap((user) => user.Handles)),
+              ];
+
+              return (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{role}</td>
+                  <td class="table-cell">{uniqueModules.join(", ")}</td>
+                  <td>{nameCounts[role]}</td>
+                  <td>
+                    <div className="d-flex d-sm-inline-flex ">
+                      <span className="">
+                        <IconButton
+                          className=" text-success"
+                          style={smallButtonStyle}>
+                          <BsFillPencilFill />
+                        </IconButton>
+                      </span>
+                      <span className=" d-flex d-sm-inline-flex">
+                        <IconButton
+                          className=" text-danger"
+                          style={smallButtonStyle}>
+                          <AiFillCloseCircle />
+                        </IconButton>
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </thead>
+        </table>
       </div>
     </>
   );
 };
 
-export default Users;
+export default Role;
