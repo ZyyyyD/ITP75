@@ -218,9 +218,7 @@ const Role = () => {
                 <button className="dropdown-item" onClick={sortById}>
                   ID
                 </button>
-                <button className="dropdown-item" onClick={sortByRole}>
-                  Role
-                </button>
+            
                 <button className="dropdown-item" onClick={sortByHandle}>
                   Handle
                 </button>
@@ -250,7 +248,7 @@ const Role = () => {
               <button
                 className="btn btn-primary"
                 style={{ marginLeft: "10px", marginBottom: "10px" }}>
-                Add User
+                Add Roles
               </button>
             </div>
           </div>
@@ -356,7 +354,7 @@ const Role = () => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{role}</td>
-                  <td class="table-cell">{uniqueModules.join(", ")}</td>
+                  <td className="table-cell">{uniqueModules.join(", ")}</td>
                   <td>{nameCounts[role]}</td>
                   <td>
                     <div className="d-flex d-sm-inline-flex ">

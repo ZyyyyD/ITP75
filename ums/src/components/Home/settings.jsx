@@ -53,40 +53,6 @@ const SettingsCard = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <>
-      <div className="content-wrapper" data-testid="settings-component">
-        <h2>Change Password</h2>
-        <div>
-          <label htmlFor="currentPasswordInput">Current Password:</label>
-          <input
-            type="password"
-            id="currentPasswordInput"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="newPasswordInput">New Password:</label>
-          <input
-            type="password"
-            id="newPasswordInput"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="confirmPasswordInput">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirmPasswordInput"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <button onClick={handleChangePassword}>Change Password</button>
-        <p>{message}</p>
-=======
     <div className="container mt-5 align-items-center">
       <div className="row">
         <div className="col-md-6 offset-md-3">
@@ -164,7 +130,6 @@ const SettingsCard = () => {
             </div>
           </div>
         </div>
->>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
       </div>
     </div>
   );

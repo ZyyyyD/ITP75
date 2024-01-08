@@ -12,10 +12,6 @@ function Login() {
   const users = [
     { username: "cueno@gmail.com", password: "password" },
     { username: "maceda@gmail.com", password: "pass123" },
-<<<<<<< HEAD
-    // Dagdag boi
-=======
->>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
   ];
 
   const navigate = useNavigate();
