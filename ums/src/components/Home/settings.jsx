@@ -1,33 +1,59 @@
 import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import { colors } from "@mui/material";
 
-const Settings = () => {
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState("");
+const SettingsCard = () => {
+  const [passwords, setPasswords] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const [errors, setErrors] = useState({});
 
-  const handleChangePassword = () => {
-    // Perform password change logic here
-    if (currentPassword && newPassword && confirmPassword) {
-      if (newPassword === confirmPassword) {
-        // Implement your password change logic here
-        // For simplicity, let's just log the changes
-        console.log("Password changed successfully!");
-        setMessage("Password changed successfully!");
-      } else {
-        setMessage("New password and confirm password do not match.");
-      }
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setPasswords({ ...passwords, [id]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Basic password validation
+    const { newPassword, confirmPassword } = passwords;
+    const errors = {};
+    if (newPassword.length < 6) {
+      errors.newPassword = "Password should be at least 6 characters";
+    }
+    if (newPassword !== confirmPassword) {
+      errors.confirmPassword = "Passwords do not match";
+    }
+    // Set errors or submit the form
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
     } else {
-      setMessage("Please fill in all fields.");
+      // Submit logic here
+      console.log("Form submitted:", passwords);
+      // Reset form fields after successful submission if needed
+      setPasswords({
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+      setErrors({});
     }
   };
 
   const handleDelete = () => {
     // Clear fields when Delete button is clicked
     setPasswords({
+<<<<<<< HEAD
       currentPassword: '',
       newPassword: '',
       confirmPassword: '',
+=======
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+>>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
     });
     setErrors({});
   };
@@ -38,7 +64,13 @@ const Settings = () => {
         <div className="col-md-6 offset-md-3">
           <div className="card">
             <div className="card-header">
+<<<<<<< HEAD
               <h3 className="card-title" style={{color: "black"}}>Change Password</h3>
+=======
+              <h3 className="card-title" style={{ color: "black" }}>
+                Change Password
+              </h3>
+>>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
@@ -48,7 +80,11 @@ const Settings = () => {
                       Current Admin Password:
                     </label>
                     <input
+<<<<<<< HEAD
                     required
+=======
+                      required
+>>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
                       type="password"
                       id="currentPassword"
                       className="form-control form-control-lg"
@@ -61,7 +97,11 @@ const Settings = () => {
                       New Admin Password:
                     </label>
                     <input
+<<<<<<< HEAD
                     required
+=======
+                      required
+>>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
                       type="password"
                       id="newPassword"
                       className="form-control form-control-lg"
@@ -74,7 +114,11 @@ const Settings = () => {
                       Confirm Admin Password:
                     </label>
                     <input
+<<<<<<< HEAD
                     required
+=======
+                      required
+>>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
                       type="password"
                       id="confirmPassword"
                       className="form-control form-control-lg"
@@ -82,11 +126,18 @@ const Settings = () => {
                       onChange={handleChange}
                     />
                     <label className="text-danger">{errors.newPassword}</label>
+<<<<<<< HEAD
                     <label className="text-danger">{errors.confirmPassword}</label>
+=======
+                    <label className="text-danger">
+                      {errors.confirmPassword}
+                    </label>
+>>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
                   </li>
                 </ul>
 
                 <div className="row mt-3">
+<<<<<<< HEAD
               
                 <div className="d-flex flex-column">
                   <button
@@ -100,10 +151,27 @@ const Settings = () => {
                   </button>
                 </div>
                 {/* <div style={{ color: 'red' }}>{errors}</div> */}
+=======
+                  <div className="d-flex flex-column">
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-block mb-2">
+                      SAVE
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-block"
+                      onClick={handleDelete}>
+                      DELETE
+                    </button>
+                  </div>
+                  {/* <div style={{ color: 'red' }}>{errors}</div> */}
+>>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
                 </div>
               </form>
             </div>
           </div>
+<<<<<<< HEAD
         </div>
       </div>
     </div>
@@ -121,28 +189,18 @@ const Settings = () => {
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
           />
+=======
+>>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
         </div>
-        <div>
-          <label>New Password:</label>
-          <input
-            type="password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Confirm Password:</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <button onClick={handleChangePassword}>Change Password</button>
-        <p>{message}</p>
       </div>
+<<<<<<< HEAD
     </>
 
 
+=======
+    </div>
+  );
+};
+>>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
 
-export default Settings;
+export default SettingsCard;

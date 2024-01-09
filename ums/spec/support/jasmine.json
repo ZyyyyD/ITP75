@@ -1,0 +1,5 @@
+{
+  "spec_dir": "src",
+  "spec_files": ["*/__tests__/.spec.js"],
+  "helpers": ["node_modules/jasmine-enzyme/lib/jasmine-enzyme.js"]
+}
