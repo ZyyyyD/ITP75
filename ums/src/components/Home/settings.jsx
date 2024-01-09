@@ -1,44 +1,24 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import { colors } from '@mui/material';
+import React, { useState } from "react";
 
-const SettingsCard = () => {
-  const [passwords, setPasswords] = useState({
-    currentPassword: '',
-    newPassword: '',
-    confirmPassword: '',
-  });
-  const [errors, setErrors] = useState({});
+const Settings = () => {
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setPasswords({ ...passwords, [id]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Basic password validation
-    const { newPassword, confirmPassword } = passwords;
-    const errors = {};
-    if (newPassword.length < 6) {
-      errors.newPassword = 'Password should be at least 6 characters';
-    }
-    if (newPassword !== confirmPassword) {
-      errors.confirmPassword = 'Passwords do not match';
-    }
-    // Set errors or submit the form
-    if (Object.keys(errors).length > 0) {
-      setErrors(errors);
+  const handleChangePassword = () => {
+    // Perform password change logic here
+    if (currentPassword && newPassword && confirmPassword) {
+      if (newPassword === confirmPassword) {
+        // Implement your password change logic here
+        // For simplicity, let's just log the changes
+        console.log("Password changed successfully!");
+        setMessage("Password changed successfully!");
+      } else {
+        setMessage("New password and confirm password do not match.");
+      }
     } else {
-      // Submit logic here
-      console.log('Form submitted:', passwords);
-      // Reset form fields after successful submission if needed
-      setPasswords({
-        currentPassword: '',
-        newPassword: '',
-        confirmPassword: '',
-      });
-      setErrors({});
+      setMessage("Please fill in all fields.");
     }
   };
 
@@ -130,4 +110,39 @@ const SettingsCard = () => {
   );
 };
 
-export default SettingsCard;
+
+    <>
+      <div className="content-wrapper">
+        <h2>Change Password</h2>
+        <div>
+          <label>Current Password:</label>
+          <input
+            type="password"
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>New Password:</label>
+          <input
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Confirm Password:</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
+        <button onClick={handleChangePassword}>Change Password</button>
+        <p>{message}</p>
+      </div>
+    </>
+
+
+
+export default Settings;

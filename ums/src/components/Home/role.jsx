@@ -241,11 +241,82 @@ const Users = () => {
                   <th>#</th>
                   <th className="centered-cell">Name</th>
                   <th className="centered-cell">Handle</th>
+                  <th>Date Created</th>
+                  <th>No.of Users</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.keys(nameCounts).map((role, index) => {
+                  const roleUsers = users.filter((user) => user.Role === role);
+                  const dateCreated =
+                    roleUsers.length > 0 ? roleUsers[0].Date_Created : "";
+
+                  // Extract unique module names for the current role
+                  const uniqueModules = [
+                    ...new Set(roleUsers.flatMap((user) => user.Handles)),
+                  ];
+
+                  return (
+                    <tr key={index}>
+                      <td className="centered-cell">{index + 1}</td>
+                      <td className="centered-cell">{role}</td>
+                      <td className="centered-cell">
+                        {uniqueModules.join(", ")}
+                      </td>
+                      <td className="centered-cell">{dateCreated}</td>
+                      <td className="centered-cell">{nameCounts[role]}</td>
+                      <td className="centered-cell">
+                        <div className="d-flex d-sm-inline-flex ">
+                          <span className="">
+                            <IconButton
+                              className=" text-success"
+                              style={smallButtonStyle}>
+                              <BsFillPencilFill />
+                            </IconButton>
+                          </span>
+                          <span className=" d-flex d-sm-inline-flex">
+                            <IconButton
+                              className=" text-danger"
+                              style={smallButtonStyle}>
+                              <AiFillCloseCircle />
+                            </IconButton>
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="d-flex justify-content-between align-items-center mb-2">
+            <div className="search-container">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchPhrase}
+                onChange={search}
+                className="search-input"
+                style={{ width: "200px" }}
+              />
+            </div>
+          </div>
+
+          <div className="table-responsive">
+            <table className="table table d-none d-md-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th className="centered-cell">Name</th>
+                  <th className="centered-cell">Handle</th>
                   <th className="centered-cell">Date Created</th>
                   <th className="centered-cell">No.of Users</th>
                   <th className="centered-cell">Action</th>
                 </tr>
               </thead>
+
               <tbody>
                 {Object.keys(nameCounts).map((role, index) => {
                   const roleUsers = users.filter((user) => user.Role === role);
@@ -361,6 +432,46 @@ const Users = () => {
           </thead>
         </table>
       </div>
+
+      {/* Mobile table Veiw */}
+      <table className="table table-responsive-sm d-md-none table-borderless">
+        <thead className="table-responsive-md">
+          {Object.keys(nameCounts).map((role, index) => {
+            const roleUsers = users.filter((user) => user.Role === role);
+            // Extract unique module names for the current role
+            const uniqueModules = [
+              ...new Set(roleUsers.flatMap((user) => user.Handles)),
+            ];
+
+            return (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{role}</td>
+                <td class="table-cell">{uniqueModules.join(", ")}</td>
+                <td>{nameCounts[role]}</td>
+                <td>
+                  <div className="d-flex d-sm-inline-flex ">
+                    <span className="">
+                      <IconButton
+                        className=" text-success"
+                        style={smallButtonStyle}>
+                        <BsFillPencilFill />
+                      </IconButton>
+                    </span>
+                    <span className=" d-flex d-sm-inline-flex">
+                      <IconButton
+                        className=" text-danger"
+                        style={smallButtonStyle}>
+                        <AiFillCloseCircle />
+                      </IconButton>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </thead>
+      </table>
     </>
   );
 };
