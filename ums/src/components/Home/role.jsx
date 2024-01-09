@@ -421,9 +421,13 @@ const Role = () => {
             {Object.keys(nameCounts).map((role, index) => {
               const roleUsers = users.filter((user) => user.Role === role);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
               
 >>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
+=======
+              
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
               // Extract unique module names for the current role
               const uniqueModules = [
                 ...new Set(roleUsers.flatMap((user) => user.Handles)),

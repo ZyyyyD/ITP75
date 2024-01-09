@@ -33,3 +33,7 @@ describe('Signout Component', () => {
     
   });
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2

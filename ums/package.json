@@ -7,6 +7,11 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.3",
     "@mui/material": "^5.15.3",
+<<<<<<< HEAD
+=======
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.2",
     "jest": "^29.7.0",
@@ -47,9 +52,13 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "jasmine": "^5.1.0",
     "react-test-renderer": "^18.2.0"
+=======
+    "jasmine": "^5.1.0"
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
   }
 }

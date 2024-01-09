@@ -46,6 +46,7 @@ const SettingsCard = () => {
     // Clear fields when Delete button is clicked
     setPasswords({
 <<<<<<< HEAD
+<<<<<<< HEAD
       currentPassword: '',
       newPassword: '',
       confirmPassword: '',
@@ -54,6 +55,11 @@ const SettingsCard = () => {
       newPassword: "",
       confirmPassword: "",
 >>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
+=======
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
     });
     setErrors({});
   };
@@ -65,12 +71,18 @@ const SettingsCard = () => {
           <div className="card">
             <div className="card-header">
 <<<<<<< HEAD
+<<<<<<< HEAD
               <h3 className="card-title" style={{color: "black"}}>Change Password</h3>
 =======
               <h3 className="card-title" style={{ color: "black" }}>
                 Change Password
               </h3>
 >>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
+=======
+              <h3 className="card-title" style={{ color: "black" }}>
+                Change Password
+              </h3>
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
@@ -81,10 +93,14 @@ const SettingsCard = () => {
                     </label>
                     <input
 <<<<<<< HEAD
+<<<<<<< HEAD
                     required
 =======
                       required
 >>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
+=======
+                      required
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
                       type="password"
                       id="currentPassword"
                       className="form-control form-control-lg"
@@ -98,10 +114,14 @@ const SettingsCard = () => {
                     </label>
                     <input
 <<<<<<< HEAD
+<<<<<<< HEAD
                     required
 =======
                       required
 >>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
+=======
+                      required
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
                       type="password"
                       id="newPassword"
                       className="form-control form-control-lg"
@@ -115,10 +135,14 @@ const SettingsCard = () => {
                     </label>
                     <input
 <<<<<<< HEAD
+<<<<<<< HEAD
                     required
 =======
                       required
 >>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
+=======
+                      required
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
                       type="password"
                       id="confirmPassword"
                       className="form-control form-control-lg"
@@ -127,16 +151,23 @@ const SettingsCard = () => {
                     />
                     <label className="text-danger">{errors.newPassword}</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <label className="text-danger">{errors.confirmPassword}</label>
 =======
                     <label className="text-danger">
                       {errors.confirmPassword}
                     </label>
 >>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
+=======
+                    <label className="text-danger">
+                      {errors.confirmPassword}
+                    </label>
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
                   </li>
                 </ul>
 
                 <div className="row mt-3">
+<<<<<<< HEAD
 <<<<<<< HEAD
               
                 <div className="d-flex flex-column">
@@ -152,6 +183,8 @@ const SettingsCard = () => {
                 </div>
                 {/* <div style={{ color: 'red' }}>{errors}</div> */}
 =======
+=======
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
                   <div className="d-flex flex-column">
                     <button
                       type="submit"
@@ -166,7 +199,10 @@ const SettingsCard = () => {
                     </button>
                   </div>
                   {/* <div style={{ color: 'red' }}>{errors}</div> */}
+<<<<<<< HEAD
 >>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
+=======
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
                 </div>
               </form>
             </div>
@@ -178,6 +214,7 @@ const SettingsCard = () => {
   );
 };
 
+<<<<<<< HEAD
 
     <>
       <div className="content-wrapper">
@@ -203,4 +240,6 @@ const SettingsCard = () => {
 };
 >>>>>>> fd0fe8dc8f80ea6118f710800b2bca66447f86a9
 
+=======
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
 export default SettingsCard;

@@ -22,7 +22,11 @@ const NotificationDropdown = () => {
       </IconButton>
       <Menu
         anchorEl={anchorEl}
+<<<<<<< HEAD
         open={Boolean(anchorEl)} 
+=======
+        open={Boolean(anchorEl)}
+>>>>>>> f9827ef0bd6857920ac0b9491337ae7e47b786e2
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
